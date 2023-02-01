@@ -20,6 +20,7 @@ object MowerExecutor {
       case Direction.E => (mower.getX + 1, mower.getY)
       case Direction.S => (mower.getX, mower.getY - 1)
       case Direction.W => (mower.getX - 1, mower.getY)
+      case _ => (mower.getX, mower.getY)
     }
 
     if (lawn.isPositionValid(newPosition)) {
@@ -35,6 +36,7 @@ object MowerExecutor {
       case Direction.E => Direction.S
       case Direction.S => Direction.W
       case Direction.W => Direction.N
+      case _ => mower.getDirection
     }
     new Mower(mower.getX, mower.getY, newDirection, mower.getHistory :+ ((mower.getX, mower.getY, mower.getDirection, Instruction.D)))
   }
@@ -45,6 +47,7 @@ object MowerExecutor {
       case Direction.E => Direction.N
       case Direction.S => Direction.E
       case Direction.W => Direction.S
+      case _ => mower.getDirection
     }
     new Mower(mower.getX, mower.getY, newDirection, mower.getHistory :+ ((mower.getX, mower.getY, mower.getDirection, Instruction.G)))
   }
@@ -54,6 +57,7 @@ object MowerExecutor {
       case Instruction.A => forward(lawn, mower)
       case Instruction.D => turnRight(mower)
       case Instruction.G => turnLeft(mower)
+      case _ => mower
     }
   }
 }
