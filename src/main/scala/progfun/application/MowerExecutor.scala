@@ -1,8 +1,6 @@
-package application
+package progfun.application
 
-import domain.Direction.Direction
-import domain.Instruction.Instruction
-import domain.{Direction, Instruction, Lawn, Mower}
+import progfun.domain.{Direction, Instruction, Lawn, Mower}
 
 object MowerExecutor {
 

@@ -1,6 +1,7 @@
-package application
+package progfun.application
 
-import domain.{Lawn, Mower, MowerInitializationData}
+import progfun.application
+import progfun.domain.{Lawn, Mower, MowerInitializationData}
 
 class MowerEngine(parser: Parser) {
 
@@ -12,7 +13,7 @@ class MowerEngine(parser: Parser) {
       val finalMower = MowerExecutor.executeInstructions(lawn, mowerData.instructions, mower)
       finalMower
     })
-    MowerResult(lawn, mowersResult)
+    application.MowerResult(lawn, mowersResult)
   }
 
   private def buildMower(mowerData: MowerInitializationData): Mower = {

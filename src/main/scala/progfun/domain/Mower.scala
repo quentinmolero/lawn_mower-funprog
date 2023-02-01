@@ -1,8 +1,9 @@
-package domain
+package progfun.domain
 
-import domain.Direction.Direction
-import domain.Instruction.Instruction
-import dto.MowerDTO
+import Direction.Direction
+import Instruction.Instruction
+import progfun.dto
+import progfun.dto.MowerDTO
 
 class Mower(x: Int, y: Int, direction: Direction, history: List[(Int, Int, Direction, Instruction)]) {
   def getX: Int = x
@@ -23,9 +24,9 @@ class Mower(x: Int, y: Int, direction: Direction, history: List[(Int, Int, Direc
 
   def toDTO: MowerDTO = {
     if (history.isEmpty) {
-      MowerDTO(x, y, direction, List(), x, y, direction)
+      dto.MowerDTO(x, y, direction, List(), x, y, direction)
     } else {
-      history.headOption.map(head => MowerDTO(head._1, head._2, head._3, history.map(_._4), x, y, direction)).getOrElse(MowerDTO(x, y, direction, List(), x, y, direction))
+      history.headOption.map(head => dto.MowerDTO(head._1, head._2, head._3, history.map(_._4), x, y, direction)).getOrElse(dto.MowerDTO(x, y, direction, List(), x, y, direction))
     }
   }
 

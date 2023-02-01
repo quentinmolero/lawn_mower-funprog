@@ -1,10 +1,16 @@
 package fr.esgi.al.funprog
 
-object Main extends App {
-  println("Ici le programme principal")
-  // Le code suivant ne compilera pas.
-  // var tmp = null;
-  // var tmp2 = if (tmp == 1) "yes" else 1
+import progfun.application.{MowerEngine, Parser}
 
-  // println(s"tmp: $tmp, tmp2: $tmp2")
+object Main extends App {
+  if (args.length != 1) {
+    println("Usage: sbt \"runMain fr.esgi.al.funprog.Main <file>\"")
+    System.exit(1)
+  }
+  val filePath = args(0)
+  val parser = new Parser(filePath).validateFile()
+  val mowerEngine = new MowerEngine(parser)
+  val mowerResult = mowerEngine.calculateMowerResult
+  println(mowerResult.toJSON)
+  println(mowerResult.toCSV)
 }

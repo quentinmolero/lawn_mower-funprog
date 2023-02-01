@@ -1,6 +1,6 @@
-package dto
+package progfun.dto
 
-import domain.Direction.Direction
+import progfun.domain.Direction.Direction
 
 case class PositionDTO(
                         private val x: Int,

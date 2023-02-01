@@ -1,6 +1,6 @@
-package domain
+package progfun.domain
 
-import dto.LawnDTO
+import progfun.dto.LawnDTO
 
 class Lawn(topRightCorner: (Int, Int)) {
   val bottomLeftCorner: (Int, Int) = (0, 0)

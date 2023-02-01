@@ -1,7 +1,8 @@
-package application
+package progfun.application
 
-import domain.{Lawn, Mower}
-import dto.MowerResultDTO
+import progfun.domain.{Lawn, Mower}
+import progfun.dto
+import progfun.dto.MowerResultDTO
 
 case class MowerResult(lawn: Lawn, mowers: List[Mower]) {
   def toJSON: String = {
@@ -10,7 +11,7 @@ case class MowerResult(lawn: Lawn, mowers: List[Mower]) {
   }
 
   def toDTO: MowerResultDTO = {
-    MowerResultDTO(lawn.toDTO, mowers.map(_.toDTO))
+    dto.MowerResultDTO(lawn.toDTO, mowers.map(_.toDTO))
   }
 
   def toCSV: String = {

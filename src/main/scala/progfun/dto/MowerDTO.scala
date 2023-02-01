@@ -1,7 +1,8 @@
-package dto
+package progfun.dto
 
-import domain.Direction.Direction
-import domain.Instruction.Instruction
+import progfun.domain.Direction.Direction
+import progfun.domain.Instruction.Instruction
+import progfun.dto
 
 case class MowerDTO(
                      private val startingX: Int,
@@ -11,7 +12,7 @@ case class MowerDTO(
                      private val endingX: Int,
                      private val endingY: Int,
                      private val endingDirection: Direction) {
-  val debut: PositionDTO = PositionDTO(startingX, startingY, startingDirection)
+  val debut: PositionDTO = dto.PositionDTO(startingX, startingY, startingDirection)
   val instructions: List[String] = instructionList.map(_.toString)
-  val fin: PositionDTO = PositionDTO(endingX, endingY, endingDirection)
+  val fin: PositionDTO = dto.PositionDTO(endingX, endingY, endingDirection)
 }

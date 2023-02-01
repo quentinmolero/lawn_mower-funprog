@@ -1,4 +1,4 @@
-package example
+package progfun.example
 
 import scala.io.StdIn
 

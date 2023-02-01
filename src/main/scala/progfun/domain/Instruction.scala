@@ -1,4 +1,4 @@
-package domain
+package progfun.domain
 
 object Instruction extends Enumeration {
   type Instruction = Value

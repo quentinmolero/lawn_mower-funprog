@@ -1,5 +1,5 @@
-package domain
+package progfun.domain
 
-import domain.Direction.Direction
+import Direction.Direction
 
 case class MowerInitializationData(x: Int, y: Int, direction: Direction, instructions: String)

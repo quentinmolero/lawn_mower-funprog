@@ -1,6 +1,7 @@
-package application
+package progfun.application
 
-import domain.{Direction, MowerInitializationData}
+import progfun.domain
+import progfun.domain.{Direction, MowerInitializationData}
 
 import scala.io.Source
 import scala.util.{Failure, Success, Try}
@@ -64,7 +65,7 @@ class Parser(filePath: String) {
       case List(initializationData, instructionsData) =>
         val initData = readMowerInitializationData(initializationData)
         val instructions = instructionsData
-        MowerInitializationData(initData._1, initData._2, Direction.getDirection(initData._3), instructions)
+        domain.MowerInitializationData(initData._1, initData._2, Direction.getDirection(initData._3), instructions)
     }.toList
     file.close()
     datas

@@ -1,6 +1,7 @@
 package example
 
 import org.scalatest.funsuite.AnyFunSuite
+import progfun.example.Hello
 
 class HelloSpec extends AnyFunSuite {
 
