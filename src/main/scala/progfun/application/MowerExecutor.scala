@@ -1,5 +1,7 @@
 package progfun.application
 
+import progfun.domain.Direction.Direction
+import progfun.domain.Instruction.Instruction
 import progfun.domain.{Direction, Instruction, Lawn, Mower}
 
 object MowerExecutor {
