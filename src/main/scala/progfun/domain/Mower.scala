@@ -15,11 +15,12 @@ class Mower(x: Int, y: Int, direction: Direction, history: List[(Int, Int, Direc
   def getHistory: List[(Int, Int, Direction, Instruction)] = history
 
   def toJSON: String = {
-    val historyJson = history.map { case (x, y, direction, instruction) =>
-      s"""{"x":${x.toString},"y":${y.toString},"direction":"${direction.toString}","instruction":"${instruction.toString}"}"""
+    val initialData = history.headOption.getOrElse((x, y, direction, Instruction.A))
+    val instructionsJson = history.map { case (_, _, _, instruction) =>
+      s""""${instruction.toString}""""
     }.mkString(",")
 
-    s"""{"x":${x.toString},"y":${y.toString},"direction":"${direction.toString}","history":[$historyJson]}"""
+    s"""{"debut":{"point":{"x":${initialData._1.toString},"y":${initialData._2.toString},"direction":"${initialData._3.toString}"},"instructions":[$instructionsJson],"fin":{"point":{"x":${x.toString},"y":${y.toString}},"direction":"${direction.toString}"}}"""
   }
 
   def toDTO: MowerDTO = {

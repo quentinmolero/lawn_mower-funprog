@@ -11,7 +11,7 @@ class Lawn(topRightCorner: (Int, Int)) {
   }
 
   def toJSON: String = {
-    s"""{"topRightCorner":{"x":${topRightCorner._1.toString},"y":${topRightCorner._2.toString}}}"""
+    s"""{"x":${topRightCorner._1.toString},"y":${topRightCorner._2.toString}}"""
   }
 
   def toDTO: LawnDTO = {

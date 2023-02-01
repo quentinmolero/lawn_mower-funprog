@@ -7,7 +7,7 @@ import progfun.dto.MowerResultDTO
 case class MowerResult(lawn: Lawn, mowers: List[Mower]) {
   def toJSON: String = {
     val mowersJson = mowers.map(_.toJSON).mkString(",")
-    s"""{"lawn":${lawn.toJSON},"mowers":[$mowersJson]}"""
+    s"""{"limite":${lawn.toJSON},"tondeuses":[$mowersJson]}"""
   }
 
   def toDTO: MowerResultDTO = {
