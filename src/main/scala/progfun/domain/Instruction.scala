@@ -11,7 +11,7 @@ object Instruction extends Enumeration {
       case 'A' => Instruction.A
       case 'D' => Instruction.D
       case 'G' => Instruction.G
-      case _ => Instruction.A
+      case _   => Instruction.A
     }
   }
 }

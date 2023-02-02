@@ -15,7 +15,8 @@ case class MowerResult(lawn: Lawn, mowers: List[Mower]) {
   }
 
   def toCSV: String = {
-    val header = "numéro;début_x;début_y;début_direction;fin_x;fin_y;fin_direction;instructions"
+    val header =
+      "numéro;début_x;début_y;début_direction;fin_x;fin_y;fin_direction;instructions"
     val mowersCSV = mowers.zipWithIndex.map(mowerWithIndex => {
       val mower = mowerWithIndex._1
       val index = mowerWithIndex._2

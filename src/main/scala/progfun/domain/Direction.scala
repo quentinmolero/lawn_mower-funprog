@@ -13,7 +13,7 @@ object Direction extends Enumeration {
       case 'E' => Direction.E
       case 'S' => Direction.S
       case 'W' => Direction.W
-      case _ => Direction.N
+      case _   => Direction.N
     }
   }
 }

@@ -24,8 +24,14 @@ class Parser(filePath: String) {
 
   private def validateLawnDefinition(line: String): Try[Unit] = {
     val parts = line.split(" ")
-    if (parts.length != 2 || !parts.forall(part => part.forall(char => char.isDigit))) {
-      Failure(new DonneesIncorectesException("Expected first line to contain two integers separated by a space"))
+    if (parts.length != 2 || !parts.forall(
+          part => part.forall(char => char.isDigit)
+        )) {
+      Failure(
+        new DonneesIncorectesException(
+          "Expected first line to contain two integers separated by a space"
+        )
+      )
     } else {
       Success(())
     }
@@ -37,16 +43,24 @@ class Parser(filePath: String) {
         val lineIsValid = index % 2 match {
           case 0 =>
             val parts = line.split(" ")
-            parts.length == 3 && parts(0).forall(_.isDigit) && parts(1).forall(_.isDigit) && List("N", "E", "S", "W").contains(parts(2))
+            parts.length == 3 && parts(0).forall(_.isDigit) && parts(1).forall(
+              _.isDigit
+            ) && List("N", "E", "S", "W").contains(parts(2))
           case 1 =>
             line.forall(c => List('A', 'D', 'G').contains(c))
           case _ => false
         }
-        if (lineIsValid) Success(()) else Failure(new DonneesIncorectesException(s"Line ${index.toString} is not valid"))
+        if (lineIsValid) Success(())
+        else
+          Failure(
+            new DonneesIncorectesException(
+              s"Line ${index.toString} is not valid"
+            )
+          )
     }
-    if (results.forall(_.isSuccess)) Success(()) else results.find(_.isFailure).getOrElse(Success(()))
+    if (results.forall(_.isSuccess)) Success(())
+    else results.find(_.isFailure).getOrElse(Success(()))
   }
-
 
   def getLawnSize(): (Int, Int) = {
     val file = Source.fromFile(filePath)
@@ -60,12 +74,20 @@ class Parser(filePath: String) {
   def getMowersData(): List[MowerInitializationData] = {
     val file = Source.fromFile(filePath)
     val lines = file.getLines().drop(1)
-    val datas = lines.toList.grouped(2).map {
-      case List(initializationData, instructionsData) =>
-        val initData = readMowerInitializationData(initializationData)
-        val instructions = instructionsData
-        domain.MowerInitializationData(initData._1, initData._2, Direction.getDirection(initData._3), instructions)
-    }.toList
+    val datas = lines.toList
+      .grouped(2)
+      .map {
+        case List(initializationData, instructionsData) =>
+          val initData = readMowerInitializationData(initializationData)
+          val instructions = instructionsData
+          domain.MowerInitializationData(
+            initData._1,
+            initData._2,
+            Direction.getDirection(initData._3),
+            instructions
+          )
+      }
+      .toList
     file.close()
     datas
   }

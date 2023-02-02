@@ -10,7 +10,8 @@ class MowerEngine(parser: Parser) {
     val mowersData = parser.getMowersData()
     val mowersResult = mowersData.map(mowerData => {
       val mower = buildMower(mowerData)
-      val finalMower = MowerExecutor.executeInstructions(lawn, mowerData.instructions, mower)
+      val finalMower =
+        MowerExecutor.executeInstructions(lawn, mowerData.instructions, mower)
       finalMower
     })
     application.MowerResult(lawn, mowersResult)
