@@ -7,7 +7,7 @@ class InstructionTest extends AnyFunSuite {
     assert(Instruction.getInstruction('A') == Instruction.A)
     assert(Instruction.getInstruction('D') == Instruction.D)
     assert(Instruction.getInstruction('G') == Instruction.G)
-    assert(Instruction.getInstruction('X') == Instruction.A)
+    assert(Instruction.getInstruction('X') == Instruction.NONE)
   }
 
   test("Instruction.toString") {

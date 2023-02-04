@@ -5,13 +5,14 @@ object Instruction extends Enumeration {
   val A = Value("A")
   val D = Value("D")
   val G = Value("G")
+  val NONE = Value("")
 
   def getInstruction(instruction: Char): Instruction = {
     instruction match {
       case 'A' => Instruction.A
       case 'D' => Instruction.D
       case 'G' => Instruction.G
-      case _   => Instruction.A
+      case _   => Instruction.NONE
     }
   }
 }

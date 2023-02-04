@@ -8,15 +8,16 @@ import scala.util.{Failure, Success, Try}
 
 class Parser(filePath: String) {
 
+  @SuppressWarnings(Array("org.wartremover.warts.Throw"))
   def validateFile(): Parser = {
     val file = Source.fromFile(filePath)
     validateLawnDefinition(file.getLines().next()) match {
       case Success(_) =>
         validateMowersData(file.getLines().toList) match {
-          case Success(_) => //do something
-          case Failure(_) =>
+          case Success(_) =>
+          case Failure(_) => throw new DonneesIncorectesException("Mower data is invalid")
         }
-      case Failure(_) => //handle exception
+      case Failure(_) => throw new DonneesIncorectesException("Lawn definition is invalid")
     }
     file.close()
     this

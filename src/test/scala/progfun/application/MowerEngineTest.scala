@@ -1,7 +1,7 @@
 package progfun.application
 
 import org.scalatest.funsuite.AnyFunSuite
-import progfun.domain.{Direction, Instruction, Lawn}
+import progfun.domain.{Direction, Instruction, Lawn, Mower, MowerInitializationData}
 import progfun.dto.MowerDTO
 
 class MowerEngineTest extends AnyFunSuite {
@@ -20,5 +20,20 @@ class MowerEngineTest extends AnyFunSuite {
     assert(mowerResult.mowers(1).getY == 1)
     assert(mowerResult.mowers(1).getDirection == Direction.E)
     assert(mowerResult.mowers(1).getHistory == List((3, 3, Direction.E, Instruction.A), (4, 3, Direction.E, Instruction.A), (5, 3, Direction.E, Instruction.D), (5, 3, Direction.S, Instruction.A), (5, 2, Direction.S, Instruction.A), (5, 1, Direction.S, Instruction.D), (5, 1, Direction.W, Instruction.A), (4, 1, Direction.W, Instruction.D), (4, 1, Direction.N, Instruction.D), (4, 1, Direction.E, Instruction.A)))
+  }
+
+  test("testBuildMower") {
+    val method = classOf[MowerEngine].getDeclaredMethod("buildMower", classOf[MowerInitializationData])
+    method.setAccessible(true)
+    val result = method.invoke(mowerEngine, MowerInitializationData(1, 2, Direction.N, ""))
+    result match {
+      case mower: Mower => {
+        assert(mower.getX == 1)
+        assert(mower.getY == 2)
+        assert(mower.getDirection == Direction.N)
+        assert(mower.getHistory == List())
+      }
+      case _ => fail("Expected a Mower")
+    }
   }
 }

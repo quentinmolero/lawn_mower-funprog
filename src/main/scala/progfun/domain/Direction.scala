@@ -6,6 +6,7 @@ object Direction extends Enumeration {
   val E = Value("E")
   val S = Value("S")
   val W = Value("W")
+  val NONE = Value("")
 
   def getDirection(orientation: Char): Direction = {
     orientation match {
@@ -13,7 +14,7 @@ object Direction extends Enumeration {
       case 'E' => Direction.E
       case 'S' => Direction.S
       case 'W' => Direction.W
-      case _   => Direction.N
+      case _   => Direction.NONE
     }
   }
 }

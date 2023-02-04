@@ -8,7 +8,7 @@ class DirectionTest extends AnyFunSuite {
     assert(Direction.getDirection('E') == Direction.E)
     assert(Direction.getDirection('S') == Direction.S)
     assert(Direction.getDirection('W') == Direction.W)
-    assert(Direction.getDirection('X') == Direction.N)
+    assert(Direction.getDirection('X') == Direction.NONE)
   }
 
   test("Direction.toString") {
