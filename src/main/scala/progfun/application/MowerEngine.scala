@@ -2,9 +2,8 @@ package progfun.application
 
 import progfun.application
 import progfun.domain.{Lawn, Mower}
-import progfun.infrastructure.Parser
 
-class MowerEngine(parser: Parser) {
+class MowerEngine(parser: InitializeMower) {
 
   def calculateMowerResult: MowerResult = {
     val lawn = new Lawn(parser.getLawnSize())

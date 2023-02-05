@@ -1,14 +1,12 @@
 package progfun.infrastructure
 
 import progfun.application.{DonneesIncorectesException, InitializeMower, MowerInitializationData}
-import progfun.domain
 import progfun.domain.Direction
 
 import scala.io.Source
 import scala.util.{Failure, Success, Try}
 
 class Parser(filePath: String) extends InitializeMower {
-
 
   @SuppressWarnings(Array("org.wartremover.warts.Throw"))
   def validateFile(): Parser = {
