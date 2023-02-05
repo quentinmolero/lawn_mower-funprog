@@ -1,13 +1,14 @@
 package progfun.infrastructure
 
-import progfun.application.{DonneesIncorectesException, MowerInitializationData}
+import progfun.application.{DonneesIncorectesException, InitializeMower, MowerInitializationData}
 import progfun.domain
 import progfun.domain.Direction
 
 import scala.io.Source
 import scala.util.{Failure, Success, Try}
 
-class Parser(filePath: String) {
+class Parser(filePath: String) extends InitializeMower {
+
 
   @SuppressWarnings(Array("org.wartremover.warts.Throw"))
   def validateFile(): Parser = {
@@ -64,7 +65,7 @@ class Parser(filePath: String) {
     else results.find(_.isFailure).getOrElse(Success(()))
   }
 
-  def getLawnSize(): (Int, Int) = {
+  override def getLawnSize(): (Int, Int) = {
     val file = Source.fromFile(filePath)
     val lawnSize = file.getLines().next().mkString.split(" ")
     file.close()
@@ -73,7 +74,7 @@ class Parser(filePath: String) {
     (x, y)
   }
 
-  def getMowersData(): List[MowerInitializationData] = {
+  override def getMowersData(): List[MowerInitializationData] = {
     val file = Source.fromFile(filePath)
     val lines = file.getLines().drop(1)
     val datas = lines.toList
@@ -100,5 +101,9 @@ class Parser(filePath: String) {
     val y = split(1).toInt
     val direction = split(2).charAt(0)
     (x, y, direction)
+  }
+
+  override def execute(): Unit = {
+
   }
 }
