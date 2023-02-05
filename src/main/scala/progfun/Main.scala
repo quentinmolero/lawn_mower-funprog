@@ -1,6 +1,7 @@
 package fr.esgi.al.funprog
 
-import progfun.application.{MowerEngine, Parser}
+import progfun.application.MowerEngine
+import progfun.infrastructure.Parser
 
 object Main extends App {
   if (args.length != 1) {
@@ -14,4 +15,6 @@ object Main extends App {
     println(mowerResult.toJSON)
     println(mowerResult.toCSV)
   }
+
+
 }

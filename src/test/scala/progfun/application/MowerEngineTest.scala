@@ -1,8 +1,10 @@
 package progfun.application
 
 import org.scalatest.funsuite.AnyFunSuite
-import progfun.domain.{Direction, Instruction, Lawn, Mower, MowerInitializationData}
+import progfun.application
+import progfun.domain.{Direction, Instruction, Lawn, Mower}
 import progfun.dto.MowerDTO
+import progfun.infrastructure.Parser
 
 class MowerEngineTest extends AnyFunSuite {
   val mowerEngine = new MowerEngine(new Parser("./src/test/resources/testLawn.txt"))
@@ -25,7 +27,7 @@ class MowerEngineTest extends AnyFunSuite {
   test("testBuildMower") {
     val method = classOf[MowerEngine].getDeclaredMethod("buildMower", classOf[MowerInitializationData])
     method.setAccessible(true)
-    val result = method.invoke(mowerEngine, MowerInitializationData(1, 2, Direction.N, ""))
+    val result = method.invoke(mowerEngine, application.MowerInitializationData(1, 2, Direction.N, ""))
     result match {
       case mower: Mower => {
         assert(mower.getX == 1)

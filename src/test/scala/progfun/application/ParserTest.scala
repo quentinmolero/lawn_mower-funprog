@@ -2,6 +2,7 @@ package progfun.application
 
 import org.scalatest.funsuite.AnyFunSuite
 import progfun.domain.Direction
+import progfun.infrastructure.Parser
 
 import scala.util.{Failure, Success}
 

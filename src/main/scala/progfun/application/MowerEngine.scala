@@ -1,7 +1,8 @@
 package progfun.application
 
 import progfun.application
-import progfun.domain.{Lawn, Mower, MowerInitializationData}
+import progfun.domain.{Lawn, Mower}
+import progfun.infrastructure.Parser
 
 class MowerEngine(parser: Parser) {
 

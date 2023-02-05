@@ -1,6 +1,7 @@
 package progfun.domain
 
 import org.scalatest.funsuite.AnyFunSuite
+import progfun.application.MowerInitializationData
 
 class MowerInitializationDataTest extends AnyFunSuite {
   test("MowerInitializationData") {

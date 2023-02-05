@@ -1,7 +1,8 @@
-package progfun.application
+package progfun.infrastructure
 
+import progfun.application.{DonneesIncorectesException, MowerInitializationData}
 import progfun.domain
-import progfun.domain.{Direction, MowerInitializationData}
+import progfun.domain.Direction
 
 import scala.io.Source
 import scala.util.{Failure, Success, Try}
@@ -81,7 +82,7 @@ class Parser(filePath: String) {
         case List(initializationData, instructionsData) =>
           val initData = readMowerInitializationData(initializationData)
           val instructions = instructionsData
-          domain.MowerInitializationData(
+          MowerInitializationData(
             initData._1,
             initData._2,
             Direction.getDirection(initData._3),
