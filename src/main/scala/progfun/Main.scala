@@ -1,6 +1,6 @@
 package fr.esgi.al.funprog
 
-import progfun.application.MowerEngine
+import progfun.application.{InitializeMower, MowerEngine}
 import progfun.infrastructure.responses.MowerResultAdapter
 import progfun.infrastructure.{FileParser, ParseValidator, SimpleParseValidator}
 
@@ -10,8 +10,8 @@ object Main extends App {
     System.exit(1)
   } else {
     val filePath = args(0)
-    val parserValidator = new SimpleParseValidator(filePath)
-    val parser = new FileParser(parserValidator, filePath)
+    val parserValidator: ParseValidator = new SimpleParseValidator(filePath)
+    val parser: InitializeMower = new FileParser(parserValidator, filePath)
     parser.validate()
     val mowerEngine = new MowerEngine(parser)
     val mowerResult = mowerEngine.calculateMowerResult
