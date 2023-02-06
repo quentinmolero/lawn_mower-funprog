@@ -1,6 +1,7 @@
 package progfun.application
 
 import org.scalatest.funsuite.AnyFunSuite
+import progfun.application.usecases.MowerExecutor
 import progfun.domain.Instruction.Instruction
 import progfun.domain.{Direction, Instruction, Lawn, Mower}
 

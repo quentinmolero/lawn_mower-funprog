@@ -1,6 +1,7 @@
 package progfun.application
 
 import progfun.application
+import progfun.application.usecases.MowerExecutor
 import progfun.domain.{Lawn, Mower}
 
 class MowerEngine(parser: InitializeMower) {

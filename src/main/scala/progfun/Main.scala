@@ -1,6 +1,7 @@
 package fr.esgi.al.funprog
 
 import progfun.application.MowerEngine
+import progfun.infrastructure.responses.MowerResultAdapter
 import progfun.infrastructure.{FileParser, ParseValidator, SimpleParseValidator}
 
 object Main extends App {
@@ -14,8 +15,9 @@ object Main extends App {
     parser.validate()
     val mowerEngine = new MowerEngine(parser)
     val mowerResult = mowerEngine.calculateMowerResult
-    println(mowerResult.toJSON)
-    println(mowerResult.toCSV)
+    val mowerResultAdapter = new MowerResultAdapter(mowerResult)
+    println(mowerResultAdapter.toJSON)
+    println(mowerResultAdapter.toCSV)
   }
 
 

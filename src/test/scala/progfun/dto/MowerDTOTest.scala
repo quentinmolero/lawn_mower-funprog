@@ -2,7 +2,6 @@ package progfun.dto
 
 import org.scalatest.funsuite.AnyFunSuite
 import progfun.domain.{Direction, Instruction}
-import progfun.infrastructure.responses.MowerResponse
 
 class MowerDTOTest extends AnyFunSuite {
   test("MowerDTO") {
