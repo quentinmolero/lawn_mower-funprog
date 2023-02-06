@@ -4,10 +4,10 @@ import org.scalatest.funsuite.AnyFunSuite
 import progfun.application
 import progfun.domain.{Direction, Instruction, Lawn, Mower}
 import progfun.dto.MowerDTO
-import progfun.infrastructure.Parser
+import progfun.infrastructure.FileParser
 
 class MowerEngineTest extends AnyFunSuite {
-  val mowerEngine = new MowerEngine(new Parser("./src/test/resources/testLawn.txt"))
+  val mowerEngine = new MowerEngine(new FileParser("./src/test/resources/testLawn.txt"))
 
   test("testCalculateMowerResult") {
     val mowerResult = mowerEngine.calculateMowerResult

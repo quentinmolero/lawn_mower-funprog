@@ -1,7 +1,7 @@
 package fr.esgi.al.funprog
 
 import progfun.application.MowerEngine
-import progfun.infrastructure.Parser
+import progfun.infrastructure.{FileParser, ParseValidator, SimpleParseValidator}
 
 object Main extends App {
   if (args.length != 1) {
@@ -9,7 +9,8 @@ object Main extends App {
     System.exit(1)
   } else {
     val filePath = args(0)
-    val parser = new Parser(filePath).validateFile()
+    val parserValidator = new SimpleParseValidator(filePath)
+    val parser = new FileParser(parserValidator, filePath).validate()
     val mowerEngine = new MowerEngine(parser)
     val mowerResult = mowerEngine.calculateMowerResult
     println(mowerResult.toJSON)
