@@ -3,8 +3,8 @@ package progfun.application
 import org.scalatest.funsuite.AnyFunSuite
 import progfun.application
 import progfun.domain.{Direction, Instruction, Lawn, Mower}
-import progfun.dto.MowerDTO
-import progfun.infrastructure.FileParser
+import progfun.infrastructure.{FileParser, responses}
+import progfun.infrastructure.responses.MowerResponse
 
 class MowerEngineTest extends AnyFunSuite {
   val mowerEngine = new MowerEngine(new FileParser("./src/test/resources/testLawn.txt"))
@@ -17,7 +17,7 @@ class MowerEngineTest extends AnyFunSuite {
     assert(mowerResult.mowers(0).getY == 3)
     assert(mowerResult.mowers(0).getDirection == Direction.N)
     assert(mowerResult.mowers(0).getHistory == List((1, 2, Direction.N, Instruction.G), (1, 2, Direction.W, Instruction.A), (0, 2, Direction.W, Instruction.G), (0, 2, Direction.S, Instruction.A), (0, 1, Direction.S, Instruction.G), (0, 1, Direction.E, Instruction.A), (1, 1, Direction.E, Instruction.G), (1, 1, Direction.N, Instruction.A), (1, 2, Direction.N, Instruction.A)))
-    assert(mowerResult.mowers(0).toDTO == MowerDTO(1, 2, Direction.N, List(Instruction.G, Instruction.A, Instruction.G, Instruction.A, Instruction.G, Instruction.A, Instruction.G, Instruction.A, Instruction.A), 1, 3, Direction.N))
+    assert(mowerResult.mowers(0).toDTO == responses.MowerResponse(1, 2, Direction.N, List(Instruction.G, Instruction.A, Instruction.G, Instruction.A, Instruction.G, Instruction.A, Instruction.G, Instruction.A, Instruction.A), 1, 3, Direction.N))
     assert(mowerResult.mowers(1).getX == 5)
     assert(mowerResult.mowers(1).getY == 1)
     assert(mowerResult.mowers(1).getDirection == Direction.E)

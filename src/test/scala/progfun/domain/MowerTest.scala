@@ -1,7 +1,8 @@
 package progfun.domain
 
 import org.scalatest.funsuite.AnyFunSuite
-import progfun.dto.MowerDTO
+import progfun.infrastructure.responses
+import progfun.infrastructure.responses.MowerResponse
 
 class MowerTest extends AnyFunSuite {
   val mower: Mower = new Mower(1, 2, Direction.N, List((1, 2, Direction.N, Instruction.A), (1, 3, Direction.N, Instruction.G), (1, 3, Direction.W, Instruction.A)))
@@ -18,7 +19,7 @@ class MowerTest extends AnyFunSuite {
   }
 
   test("testToDTO") {
-    assert(mower.toDTO == MowerDTO(1, 2, Direction.N, List(Instruction.A, Instruction.G, Instruction.A), 1, 2, Direction.N))
+    assert(mower.toDTO == responses.MowerResponse(1, 2, Direction.N, List(Instruction.A, Instruction.G, Instruction.A), 1, 2, Direction.N))
   }
 
   test("testToString") {

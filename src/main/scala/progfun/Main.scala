@@ -10,7 +10,8 @@ object Main extends App {
   } else {
     val filePath = args(0)
     val parserValidator = new SimpleParseValidator(filePath)
-    val parser = new FileParser(parserValidator, filePath).validate()
+    val parser = new FileParser(parserValidator, filePath)
+    parser.validate()
     val mowerEngine = new MowerEngine(parser)
     val mowerResult = mowerEngine.calculateMowerResult
     println(mowerResult.toJSON)

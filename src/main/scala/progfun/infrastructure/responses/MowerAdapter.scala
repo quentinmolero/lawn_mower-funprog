@@ -1,7 +1,7 @@
-package progfun.infrastructure.entities
+package progfun.infrastructure.responses
 
 import progfun.domain.{Instruction, Mower}
-import progfun.dto.MowerDTO
+import progfun.infrastructure.responses
 
 class MowerAdapter(mower: Mower) {
   def toJSON: String = {
@@ -17,14 +17,14 @@ class MowerAdapter(mower: Mower) {
     s"""{"debut":{"point":{"x":${initialData._1.toString},"y":${initialData._2.toString},"direction":"${initialData._3.toString}"},"instructions":[$instructionsJson],"fin":{"point":{"x":${mower.getX.toString},"y":${mower.getY.toString}},"direction":"${mower.getDirection.toString}"}}"""
   }
 
-  def toDTO: MowerDTO = {
+  def toDTO: MowerResponse = {
     if (mower.getHistory.isEmpty) {
-      MowerDTO(mower.getX, mower.getY, mower.getDirection, List(), mower.getX, mower.getY, mower.getDirection)
+      responses.MowerResponse(mower.getX, mower.getY, mower.getDirection, List(), mower.getX, mower.getY, mower.getDirection)
     } else {
       mower.getHistory.headOption
         .map(
           head =>
-            MowerDTO(
+            responses.MowerResponse(
               head._1,
               head._2,
               head._3,
@@ -34,7 +34,7 @@ class MowerAdapter(mower: Mower) {
               mower.getDirection
             )
         )
-        .getOrElse(MowerDTO(mower.getX, mower.getY, mower.getDirection, List(), mower.getX, mower.getY, mower.getDirection))
+        .getOrElse(responses.MowerResponse(mower.getX, mower.getY, mower.getDirection, List(), mower.getX, mower.getY, mower.getDirection))
     }
   }
 

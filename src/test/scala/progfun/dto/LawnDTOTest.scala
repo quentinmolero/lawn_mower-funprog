@@ -1,9 +1,10 @@
 package progfun.dto
 
 import org.scalatest.funsuite.AnyFunSuite
+import progfun.infrastructure.responses.LawnResponse
 
 class LawnDTOTest extends AnyFunSuite {
-  val lawnDTO: LawnDTO = LawnDTO(5, 5)
+  val lawnDTO: LawnResponse = LawnResponse(5, 5)
 
   test("testLawnDTO") {
     assert(lawnDTO.x == 5)

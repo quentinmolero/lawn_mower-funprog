@@ -2,10 +2,11 @@ package progfun.dto
 
 import org.scalatest.funsuite.AnyFunSuite
 import progfun.domain.{Direction, Instruction}
+import progfun.infrastructure.responses.MowerResponse
 
 class MowerDTOTest extends AnyFunSuite {
   test("MowerDTO") {
-    val mowerDTO = MowerDTO(
+    val mowerDTO = MowerResponse(
     1,
     2,
     Direction.N,

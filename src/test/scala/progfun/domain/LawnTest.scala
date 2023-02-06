@@ -2,7 +2,7 @@ package progfun.domain
 
 import org.scalatest.BeforeAndAfter
 import org.scalatest.funsuite.AnyFunSuite
-import progfun.dto.LawnDTO
+import progfun.infrastructure.responses.LawnResponse
 
 class LawnTest extends AnyFunSuite with BeforeAndAfter{
   val lawn: Lawn = new Lawn((5, 5))
@@ -22,7 +22,7 @@ class LawnTest extends AnyFunSuite with BeforeAndAfter{
   }
 
   test("testToDTO") {
-    assert(lawn.toDTO == LawnDTO(5, 5))
+    assert(lawn.toDTO == LawnResponse(5, 5))
   }
 
   test("testToString") {
