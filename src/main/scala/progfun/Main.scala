@@ -13,8 +13,7 @@ object Main extends App {
     val parserValidator: ParseValidator = new SimpleParseValidator(filePath)
     val parser: InitializeMower = new FileParser(parserValidator, filePath)
     parser.validate()
-    val mowerEngine = new MowerEngine(parser)
-    val mowerResult = mowerEngine.calculateMowerResult
+    val mowerResult = new MowerEngine(parser).calculateMowerResult
     val mowerResultAdapter = new MowerResultAdapter(mowerResult)
     println(mowerResultAdapter.toJSON)
     println(mowerResultAdapter.toCSV)
