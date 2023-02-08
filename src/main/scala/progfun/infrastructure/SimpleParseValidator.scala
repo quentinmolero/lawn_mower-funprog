@@ -12,7 +12,7 @@ class SimpleParseValidator(filePath: String) extends ParseValidator {
     val result = validateLawnDefinition(file.getLines().next()) match {
       case Success(_) =>
         validateMowersData(file.getLines().toList) match {
-          case Success(_) =>
+          case Success(_) => Success(())
           case Failure(exception) => Failure(exception)
         }
       case Failure(exception) => Failure(exception)

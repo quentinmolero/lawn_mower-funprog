@@ -11,8 +11,8 @@ class FileParser(parseValidator: ParseValidator, filePath: String) extends Initi
   @SuppressWarnings(Array("org.wartremover.warts.Throw"))
   override def validate(): Unit = {
     parseValidator.validate() match {
-        case Success(_) =>
-        case Failure(exception) => throw exception
+      case Success(_) =>
+      case Failure(exception) => throw exception
     }
   }
 
