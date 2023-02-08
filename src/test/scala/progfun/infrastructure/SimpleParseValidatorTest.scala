@@ -37,13 +37,13 @@ class SimpleParseValidatorTest extends AnyFunSuite {
     val method = parseValidator.getClass.getDeclaredMethod("validateMowersData", classOf[List[String]])
     method.setAccessible(true)
     val result = method.invoke(parseValidator, List("1 2 X", "GAGAGAGAA"))
-    assert(result == Failure(DonneesIncorectesException("Line 0 is not valid")))
+    assert(result == Failure(DonneesIncorectesException("Line 1 is not valid")))
   }
 
   test("testValidateMowersDataWithInvalidMowersInstructionsData") {
     val method = parseValidator.getClass.getDeclaredMethod("validateMowersData", classOf[List[String]])
     method.setAccessible(true)
     val result = method.invoke(parseValidator, List("1 2 N", "ABCDEFGHI"))
-    assert(result == Failure(DonneesIncorectesException("Line 1 is not valid")))
+    assert(result == Failure(DonneesIncorectesException("Line 2 is not valid")))
   }
 }

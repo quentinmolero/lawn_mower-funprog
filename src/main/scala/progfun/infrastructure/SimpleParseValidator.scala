@@ -53,7 +53,7 @@ class SimpleParseValidator(filePath: String) extends ParseValidator {
         else
           Failure(
              DonneesIncorectesException(
-              s"Line ${index.toString} is not valid"
+              s"Line ${(index + 1).toString} is not valid"
             )
           )
     }

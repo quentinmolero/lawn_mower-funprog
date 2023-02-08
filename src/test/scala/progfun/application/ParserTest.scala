@@ -15,25 +15,28 @@ class ParserTest extends AnyFunSuite {
   test("testValidateFileWithInvalidLawnDefinition") {
     val parseValidator = new SimpleParseValidator("src/test/resources/invalidInitialMowerTestLawn.txt")
     val parser = new FileParser(parseValidator, "src/test/resources/invalidInitialMowerTestLawn.txt")
-    assertThrows[DonneesIncorectesException] {
+    val thrown = intercept[DonneesIncorectesException] {
       parser.validate()
     }
+    assert(thrown.getMessage == "Données incorrectes: Line 1 is not valid")
   }
 
   test("testValidateFileWithInvalidInitialMowerDefinition") {
     val parseValidator = new SimpleParseValidator("src/test/resources/invalidInitialMowerTestLawn.txt")
     val parser = new FileParser(parseValidator, "src/test/resources/invalidInitialMowerTestLawn.txt")
-    assertThrows[DonneesIncorectesException] {
+    val thrown = intercept[DonneesIncorectesException] {
       parser.validate()
     }
+    assert(thrown.getMessage == "Données incorrectes: Line 1 is not valid")
   }
 
   test("testValidateFileWithInvalidInstructionsMowerDefinition") {
     val parseValidator = new SimpleParseValidator("src/test/resources/invalidInstructionsMowerTestLawn.txt")
     val parser = new FileParser(parseValidator, "src/test/resources/invalidInstructionsMowerTestLawn.txt")
-    assertThrows[DonneesIncorectesException] {
+    val thrown = intercept[DonneesIncorectesException] {
       parser.validate()
     }
+    assert(thrown.getMessage == "Données incorrectes: Line 2 is not valid")
   }
 
   test("testGetLawnSize") {
