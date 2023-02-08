@@ -1,5 +1,7 @@
 package progfun.infrastructure
 
+import scala.util.Try
+
 trait ParseValidator {
-  def validate(): Unit;
+  def validate(): Try[Any];
 }

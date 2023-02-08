@@ -3,6 +3,7 @@ package progfun.dto
 import org.scalatest.funsuite.AnyFunSuite
 import progfun.domain.{Direction, Instruction}
 import progfun.infrastructure.responses
+import progfun.infrastructure.responses.{LawnResponse, MowerResponse}
 
 class MowerResultDTOTest extends AnyFunSuite {
   val lawnDTO: LawnResponse = LawnResponse(5, 5)

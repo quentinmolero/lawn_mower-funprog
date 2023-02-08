@@ -1,15 +1,19 @@
 package progfun.infrastructure
 
-import progfun.application.{DonneesIncorectesException, InitializeMower, MowerInitializationData}
+import progfun.application.{InitializeMower, MowerInitializationData}
 import progfun.domain.Direction
 
 import scala.io.Source
-import scala.util.{Failure, Success, Try}
+import scala.util.{Failure, Success}
 
 class FileParser(parseValidator: ParseValidator, filePath: String) extends InitializeMower {
 
+  @SuppressWarnings(Array("org.wartremover.warts.Throw"))
   override def validate(): Unit = {
-    parseValidator.validate()
+    parseValidator.validate() match {
+        case Success(_) =>
+        case Failure(exception) => throw exception
+    }
   }
 
   override def getLawnSize(): (Int, Int) = {

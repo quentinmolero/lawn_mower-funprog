@@ -2,35 +2,36 @@ package progfun.application
 
 import org.scalatest.funsuite.AnyFunSuite
 import progfun.domain.Direction
-import progfun.infrastructure.FileParser
+import progfun.infrastructure.{FileParser, SimpleParseValidator}
 
 import scala.util.{Failure, Success}
 
 class ParserTest extends AnyFunSuite {
-  val parser = new FileParser("src/test/resources/testLawn.txt")
+  val parseValidator = new SimpleParseValidator("./src/test/resources/testLawn.txt")
+  val parser = new FileParser(parseValidator, "src/test/resources/testLawn.txt")
 
   test("testValidateFile") {
-    parser.validateFile()
+    parser.validate()
   }
 
   test("testValidateFileWithInvalidLawnDefinition") {
-    val parser = new FileParser("src/test/resources/invalidInitialMowerTestLawn.txt")
+    val parser = new FileParser(parseValidator, "src/test/resources/invalidInitialMowerTestLawn.txt")
     assertThrows[DonneesIncorectesException] {
-      parser.validateFile()
+      parser.validate()
     }
   }
 
   test("testValidateFileWithInvalidInitialMowerDefinition") {
-    val parser = new FileParser("src/test/resources/invalidInitialMowerTestLawn.txt")
+    val parser = new FileParser(parseValidator, "src/test/resources/invalidInitialMowerTestLawn.txt")
     assertThrows[DonneesIncorectesException] {
-      parser.validateFile()
+      parser.validate()
     }
   }
 
   test("testValidateFileWithInvalidInstructionsMowerDefinition") {
-    val parser = new FileParser("src/test/resources/invalidInstructionsMowerTestLawn.txt")
+    val parser = new FileParser(parseValidator, "src/test/resources/invalidInstructionsMowerTestLawn.txt")
     assertThrows[DonneesIncorectesException] {
-      parser.validateFile()
+      parser.validate()
     }
   }
 

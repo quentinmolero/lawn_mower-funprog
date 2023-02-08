@@ -15,16 +15,4 @@ class LawnTest extends AnyFunSuite with BeforeAndAfter{
     assert(!lawn.isPositionValid((-1, 5)))
     assert(!lawn.isPositionValid((5, -1)))
   }
-
-  test("testToJSON") {
-    assert(lawn.toJSON == """{"x":5,"y":5}""")
-  }
-
-  test("testToDTO") {
-    assert(lawn.toDTO == LawnResponse(5, 5))
-  }
-
-  test("testToString") {
-    assert(lawn.toString == "┌─────┐\n│     │\n│     │\n│     │\n│     │\n│     │\n└─────┘\n")
-  }
 }

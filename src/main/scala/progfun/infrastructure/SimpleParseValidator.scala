@@ -7,19 +7,18 @@ import scala.util.{Failure, Success, Try}
 
 class SimpleParseValidator(filePath: String) extends ParseValidator {
 
-  @SuppressWarnings(Array("org.wartremover.warts.Throw"))
-  override def validate(): Unit = {
+  override def validate(): Try[Unit] = {
     val file = Source.fromFile(filePath)
-    validateLawnDefinition(file.getLines().next()) match {
+    val result = validateLawnDefinition(file.getLines().next()) match {
       case Success(_) =>
         validateMowersData(file.getLines().toList) match {
           case Success(_) =>
-          case Failure(_) => throw DonneesIncorectesException("Mower data is invalid")
+          case Failure(exception) => Failure(exception)
         }
-      case Failure(_) => throw DonneesIncorectesException("Lawn definition is invalid")
+      case Failure(exception) => Failure(exception)
     }
     file.close()
-    Right(())
+    result
   }
 
   private def validateLawnDefinition(line: String): Try[Unit] = {
