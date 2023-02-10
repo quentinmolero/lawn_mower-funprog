@@ -1,13 +1,17 @@
 package progfun.application
 
 import org.scalatest.funsuite.AnyFunSuite
-import progfun.application.usecases.mowerengine.MowerEngine
-import progfun.domain.{Direction, Instruction}
+import progfun.application.usecases.mowerengine.{MowerEngine, MowerEngineProps}
+import progfun.domain.{Direction, Instruction, Lawn}
 import progfun.infrastructure.{FileParser, SimpleParseValidator}
 
 class MowerEngineTest extends AnyFunSuite {
   val parseValidator = new SimpleParseValidator("./src/test/resources/testLawn.txt")
-  val mowerEngine = new MowerEngine(new FileParser(parseValidator, "./src/test/resources/testLawn.txt"))
+  val parser: InitializeMower = new FileParser(parseValidator, "./src/test/resources/testLawn.txt")
+  parser.validate()
+
+  val mowerEngineProps = MowerEngineProps(new Lawn(parser.getLawnSize()), parser.getMowersData())
+  val mowerEngine = new MowerEngine(mowerEngineProps)
 
   test("testCalculateMowerResult") {
     val mowerResult = mowerEngine.calculateMowerResult
