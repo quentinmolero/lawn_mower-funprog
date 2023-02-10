@@ -18,6 +18,8 @@ class SimpleParseValidator(filePath: String) extends ParseValidator {
       case Failure(exception) => Failure(exception)
     }
     file.close()
+    if(result.isFailure) {
+    }
     result
   }
 
@@ -50,12 +52,13 @@ class SimpleParseValidator(filePath: String) extends ParseValidator {
           case _ => false
         }
         if (lineIsValid) Success(())
-        else
+        else {
           Failure(
              DonneesIncorectesException(
               s"Line ${(index + 1).toString} is not valid"
             )
           )
+        }
     }
     if (results.forall(_.isSuccess)) Success(())
     else results.find(_.isFailure).getOrElse(Success(()))

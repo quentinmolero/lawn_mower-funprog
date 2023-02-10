@@ -1,6 +1,7 @@
 package progfun.application
 
 import org.scalatest.funsuite.AnyFunSuite
+import progfun.application.usecases.mowerengine.MowerEngine
 import progfun.domain.{Direction, Instruction}
 import progfun.infrastructure.{FileParser, SimpleParseValidator}
 
