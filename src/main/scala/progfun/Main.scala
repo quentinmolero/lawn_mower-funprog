@@ -5,7 +5,7 @@ import progfun.application.usecases.mowerengine.{MowerEngine, MowerEngineProps}
 import progfun.domain.Lawn
 import progfun.infrastructure.adapters.MowerResultAdapter
 import progfun.utils.parser.{FileParser, ParseValidator, SimpleParseValidator}
-import progfun.utils.printer.{ConsoleOutputPrinter, CreateOutputPrinterFactory, OutputPrinter}
+import progfun.utils.printer.{CreateOutputPrinterFactory, OutputPrinter}
 
 object Main extends App {
   if (args.length != 1) {
@@ -14,7 +14,7 @@ object Main extends App {
   } else {
     val filePath = args(0)
     val parserValidator: ParseValidator = new SimpleParseValidator(filePath)
-    val parser: InitializeMower = new FileParser(parserValidator, filePath, new ConsoleOutputPrinter(), "Vous pouvez par exemple utilisez ce genre de contenu:\n  5 5\n1 2 N\nGAGAGAGAA\n3 3 E\nAADAADADDA")
+    val parser: InitializeMower = new FileParser(parserValidator, filePath)
     parser.validate()
 
     val outputPrinter: OutputPrinter = new CreateOutputPrinterFactory().createOutputPrinter("console")
