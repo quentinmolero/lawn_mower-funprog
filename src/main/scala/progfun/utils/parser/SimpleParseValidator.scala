@@ -12,22 +12,21 @@ class SimpleParseValidator(filePath: String) extends ParseValidator {
     val result = validateLawnDefinition(file.getLines().next()) match {
       case Success(_) =>
         validateMowersData(file.getLines().toList) match {
-          case Success(_) => Success(())
+          case Success(_)         => Success(())
           case Failure(exception) => Failure(exception)
         }
       case Failure(exception) => Failure(exception)
     }
     file.close()
-    if(result.isFailure) {
-    }
+    if (result.isFailure) {}
     result
   }
 
   private def validateLawnDefinition(line: String): Try[Unit] = {
     val parts = line.split(" ")
     if (parts.length != 2 || !parts.forall(
-      part => part.forall(char => char.isDigit)
-    )) {
+          part => part.forall(char => char.isDigit)
+        )) {
       Failure(
         DonneesIncorectesException(
           "Expected first line to contain two integers separated by a space"
@@ -54,7 +53,7 @@ class SimpleParseValidator(filePath: String) extends ParseValidator {
         if (lineIsValid) Success(())
         else {
           Failure(
-             DonneesIncorectesException(
+            DonneesIncorectesException(
               s"Line ${(index + 1).toString} is not valid"
             )
           )

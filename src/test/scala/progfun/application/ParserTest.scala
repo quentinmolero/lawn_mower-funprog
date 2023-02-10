@@ -7,18 +7,25 @@ import progfun.utils.parser.{FileParser, SimpleParseValidator}
 class ParserTest extends AnyFunSuite {
 
   test("testValidateFile with a valid file") {
-    val parseValidator = new SimpleParseValidator("./src/test/resources/testLawn.txt")
-    val parser = new FileParser(parseValidator, "src/test/resources/testLawn.txt")
+    val parseValidator =
+      new SimpleParseValidator("./src/test/resources/testLawn.txt")
+    val parser =
+      new FileParser(parseValidator, "src/test/resources/testLawn.txt")
     try {
-        parser.validate()
+      parser.validate()
     } catch {
       case e: Exception => fail(e)
     }
   }
 
   test("testValidateFileWithInvalidLawnDefinition") {
-    val parseValidator = new SimpleParseValidator("src/test/resources/invalidInitialMowerTestLawn.txt")
-    val parser = new FileParser(parseValidator, "src/test/resources/invalidInitialMowerTestLawn.txt")
+    val parseValidator = new SimpleParseValidator(
+      "src/test/resources/invalidInitialMowerTestLawn.txt"
+    )
+    val parser = new FileParser(
+      parseValidator,
+      "src/test/resources/invalidInitialMowerTestLawn.txt"
+    )
     val thrown = intercept[DonneesIncorectesException] {
       parser.validate()
     }
@@ -26,8 +33,13 @@ class ParserTest extends AnyFunSuite {
   }
 
   test("testValidateFileWithInvalidInitialMowerDefinition") {
-    val parseValidator = new SimpleParseValidator("src/test/resources/invalidInitialMowerTestLawn.txt")
-    val parser = new FileParser(parseValidator, "src/test/resources/invalidInitialMowerTestLawn.txt")
+    val parseValidator = new SimpleParseValidator(
+      "src/test/resources/invalidInitialMowerTestLawn.txt"
+    )
+    val parser = new FileParser(
+      parseValidator,
+      "src/test/resources/invalidInitialMowerTestLawn.txt"
+    )
     val thrown = intercept[DonneesIncorectesException] {
       parser.validate()
     }
@@ -35,8 +47,13 @@ class ParserTest extends AnyFunSuite {
   }
 
   test("testValidateFileWithInvalidInstructionsMowerDefinition") {
-    val parseValidator = new SimpleParseValidator("src/test/resources/invalidInstructionsMowerTestLawn.txt")
-    val parser = new FileParser(parseValidator, "src/test/resources/invalidInstructionsMowerTestLawn.txt")
+    val parseValidator = new SimpleParseValidator(
+      "src/test/resources/invalidInstructionsMowerTestLawn.txt"
+    )
+    val parser = new FileParser(
+      parseValidator,
+      "src/test/resources/invalidInstructionsMowerTestLawn.txt"
+    )
     val thrown = intercept[DonneesIncorectesException] {
       parser.validate()
     }
@@ -44,16 +61,20 @@ class ParserTest extends AnyFunSuite {
   }
 
   test("testGetLawnSize") {
-    val parseValidator = new SimpleParseValidator("./src/test/resources/testLawn.txt")
-    val parser = new FileParser(parseValidator, "src/test/resources/testLawn.txt")
+    val parseValidator =
+      new SimpleParseValidator("./src/test/resources/testLawn.txt")
+    val parser =
+      new FileParser(parseValidator, "src/test/resources/testLawn.txt")
     val lawnSize = parser.getLawnSize()
     assert(lawnSize._1 == 5)
     assert(lawnSize._2 == 5)
   }
 
   test("testGetMowersData") {
-    val parseValidator = new SimpleParseValidator("./src/test/resources/testLawn.txt")
-    val parser = new FileParser(parseValidator, "src/test/resources/testLawn.txt")
+    val parseValidator =
+      new SimpleParseValidator("./src/test/resources/testLawn.txt")
+    val parser =
+      new FileParser(parseValidator, "src/test/resources/testLawn.txt")
     val mowersData = parser.getMowersData()
     assert(mowersData.size == 2)
     assert(mowersData(0).x == 1)

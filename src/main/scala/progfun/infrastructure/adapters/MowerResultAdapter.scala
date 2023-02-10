@@ -4,11 +4,10 @@ import progfun.application.MowerResult
 import progfun.dto
 import progfun.dto.MowerResultDTO
 
-
 class MowerResultAdapter(mowerResult: MowerResult) {
   val lawnAdapter: LawnAdapter = new LawnAdapter(mowerResult.lawn)
-  val mowerAdapter: List[MowerAdapter] = mowerResult.mowers.map(new MowerAdapter(_))
-
+  val mowerAdapter: List[MowerAdapter] =
+    mowerResult.mowers.map(new MowerAdapter(_))
 
   def toJSON: String = {
     val mowersJson = mowerAdapter.map(_.toJSON).mkString(",")

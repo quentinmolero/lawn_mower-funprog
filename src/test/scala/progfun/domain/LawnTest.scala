@@ -3,7 +3,7 @@ package progfun.domain
 import org.scalatest.BeforeAndAfter
 import org.scalatest.funsuite.AnyFunSuite
 
-class LawnTest extends AnyFunSuite with BeforeAndAfter{
+class LawnTest extends AnyFunSuite with BeforeAndAfter {
   val lawn: Lawn = new Lawn((5, 5))
 
   test("testIsPositionValid") {

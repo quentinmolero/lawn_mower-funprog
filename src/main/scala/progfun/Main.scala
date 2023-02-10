@@ -17,17 +17,17 @@ object Main extends App {
     val parser: InitializeMower = new FileParser(parserValidator, filePath)
     parser.validate()
 
-    val outputPrinter: OutputPrinter = new CreateOutputPrinterFactory().createOutputPrinter("console")
+    val outputPrinter: OutputPrinter =
+      new CreateOutputPrinterFactory().createOutputPrinter("console")
 
-    val mowerEngineProps = MowerEngineProps(new Lawn(parser.getLawnSize()), parser.getMowersData())
+    val mowerEngineProps =
+      MowerEngineProps(new Lawn(parser.getLawnSize()), parser.getMowersData())
 
-    print(mowerEngineProps)
     val mowerResult = new MowerEngine(mowerEngineProps).calculateMowerResult
     val mowerResultAdapter = new MowerResultAdapter(mowerResult)
 
     outputPrinter.print(mowerResultAdapter.toJSON)
     outputPrinter.print(mowerResultAdapter.toCSV)
   }
-
 
 }

@@ -23,7 +23,7 @@ case class TurnLeftUseCase() {
           mower.getDirection,
           Instruction.G
         )
-        )
+      )
     )
   }
 }

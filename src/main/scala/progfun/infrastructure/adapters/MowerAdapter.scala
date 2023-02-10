@@ -7,7 +7,8 @@ import progfun.infrastructure.responses.MowerResponse
 class MowerAdapter(mower: Mower) {
   def toJSON: String = {
     val initialData =
-      mower.getHistory.headOption.getOrElse((mower.getX, mower.getY, mower.getDirection, Instruction.A))
+      mower.getHistory.headOption
+        .getOrElse((mower.getX, mower.getY, mower.getDirection, Instruction.A))
     val instructionsJson = mower.getHistory
       .map {
         case (_, _, _, instruction) =>
@@ -20,7 +21,15 @@ class MowerAdapter(mower: Mower) {
 
   def toDTO: MowerResponse = {
     if (mower.getHistory.isEmpty) {
-      responses.MowerResponse(mower.getX, mower.getY, mower.getDirection, List(), mower.getX, mower.getY, mower.getDirection)
+      responses.MowerResponse(
+        mower.getX,
+        mower.getY,
+        mower.getDirection,
+        List(),
+        mower.getX,
+        mower.getY,
+        mower.getDirection
+      )
     } else {
       mower.getHistory.headOption
         .map(
@@ -35,7 +44,17 @@ class MowerAdapter(mower: Mower) {
               mower.getDirection
             )
         )
-        .getOrElse(responses.MowerResponse(mower.getX, mower.getY, mower.getDirection, List(), mower.getX, mower.getY, mower.getDirection))
+        .getOrElse(
+          responses.MowerResponse(
+            mower.getX,
+            mower.getY,
+            mower.getDirection,
+            List(),
+            mower.getX,
+            mower.getY,
+            mower.getDirection
+          )
+        )
     }
   }
 

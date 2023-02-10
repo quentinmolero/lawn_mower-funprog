@@ -6,12 +6,13 @@ import progfun.domain.Direction
 import scala.io.Source
 import scala.util.{Failure, Success}
 
-class FileParser(parseValidator: ParseValidator, filePath: String) extends InitializeMower {
+class FileParser(parseValidator: ParseValidator, filePath: String)
+    extends InitializeMower {
 
   @SuppressWarnings(Array("org.wartremover.warts.Throw"))
   override def validate(): Unit = {
     parseValidator.validate() match {
-      case Success(_) =>
+      case Success(_)         =>
       case Failure(exception) => throw exception
 
     }

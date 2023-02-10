@@ -25,7 +25,7 @@ case class ForwardUseCase() {
             mower.getDirection,
             Instruction.A
           )
-          )
+        )
       )
     } else {
       mower
