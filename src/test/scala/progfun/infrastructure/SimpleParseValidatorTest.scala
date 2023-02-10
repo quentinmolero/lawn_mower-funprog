@@ -2,6 +2,7 @@ package progfun.infrastructure
 
 import org.scalatest.funsuite.AnyFunSuite
 import progfun.application.DonneesIncorectesException
+import progfun.utils.parser.SimpleParseValidator
 
 import scala.util.{Failure, Success}
 

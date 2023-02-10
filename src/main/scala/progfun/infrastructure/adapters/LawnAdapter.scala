@@ -1,6 +1,7 @@
-package progfun.infrastructure.responses
+package progfun.infrastructure.adapters
 
 import progfun.domain.Lawn
+import progfun.infrastructure.responses.LawnResponse
 
 class LawnAdapter(lawn: Lawn) {
   def toJSON: String = {

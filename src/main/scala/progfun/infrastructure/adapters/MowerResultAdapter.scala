@@ -1,4 +1,4 @@
-package progfun.infrastructure.responses
+package progfun.infrastructure.adapters
 
 import progfun.application.MowerResult
 import progfun.dto

@@ -1,4 +1,4 @@
-package progfun.infrastructure
+package progfun.utils.parser
 
 import scala.util.Try
 

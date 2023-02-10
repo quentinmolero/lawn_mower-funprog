@@ -1,7 +1,8 @@
-package progfun.infrastructure.responses
+package progfun.infrastructure.adapters
 
 import progfun.domain.{Instruction, Mower}
-import progfun.infrastructure.responses
+import progfun.infrastructure.{responses}
+import progfun.infrastructure.responses.MowerResponse
 
 class MowerAdapter(mower: Mower) {
   def toJSON: String = {
@@ -24,7 +25,7 @@ class MowerAdapter(mower: Mower) {
       mower.getHistory.headOption
         .map(
           head =>
-            responses.MowerResponse(
+            MowerResponse(
               head._1,
               head._2,
               head._3,

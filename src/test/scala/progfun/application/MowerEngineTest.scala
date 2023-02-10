@@ -3,14 +3,15 @@ package progfun.application
 import org.scalatest.funsuite.AnyFunSuite
 import progfun.application.usecases.mowerengine.{MowerEngine, MowerEngineProps}
 import progfun.domain.{Direction, Instruction, Lawn}
-import progfun.infrastructure.{FileParser, SimpleParseValidator}
 
 class MowerEngineTest extends AnyFunSuite {
-  val parseValidator = new SimpleParseValidator("./src/test/resources/testLawn.txt")
-  val parser: InitializeMower = new FileParser(parseValidator, "./src/test/resources/testLawn.txt")
-  parser.validate()
+  val lawn = new Lawn((5, 5));
+  val mowerData: List[MowerInitializationData] = List.apply(
+    MowerInitializationData(1, 2, Direction.N, "GAGAGAGAA"),
+    MowerInitializationData(3, 3, Direction.E, "AADAADADDA"),
+  )
 
-  val mowerEngineProps = MowerEngineProps(new Lawn(parser.getLawnSize()), parser.getMowersData())
+  val mowerEngineProps: MowerEngineProps = MowerEngineProps(lawn, mowerData)
   val mowerEngine = new MowerEngine(mowerEngineProps)
 
   test("testCalculateMowerResult") {
